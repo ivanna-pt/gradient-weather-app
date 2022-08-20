@@ -9,6 +9,97 @@
     <link rel="stylesheet" href="src/style.css">
 </head>
 <body>
+<div class="container">
+<!--    Left weather container starts-->
+    <div class="weather-side">
+        <div class="date-container">
+<h2 class="date-dayname">Saturday</h2>
+            <div class="date-day">20 aug 2022</div>
+            <div class="location"><img src="img/location.png" width="16" alt="location icon"><span id="city">Kyiv, Ukraine</span></div>
+        </div>
+
+        <div class="weather-container">
+            <img src="img/clear=Off.png" alt="sun">
+            <div class="weather-temp-row">
+                <h1 class="weather-temp">26°</h1>
+                <div class="units">
+                    <span>C</span>
+                    <span>F</span>
+                </div>
+            </div>
+            <div class="weather-desc">Sunny</div>
+        </div>
+
+    </div>
+    <!--    Left weather container ends-->
+
+<!--    Right Info side starts-->
+    <div class="info-side">
+        <div class="today-info-container">
+            <div class="info-row">
+                <div class="title">Precipitation</div>
+                <div class="value"><span id="precipitation">0</span>%</div>
+            </div>
+            <div class="info-row">
+                <div class="title">Humidity</div>
+                <div class="value"><span id="humidity">34</span>%</div>
+            </div>
+            <div class="info-row">
+                <div class="title">Wind</div>
+                <div class="value"><span id="wind">0</span>km/h</div>
+            </div>
+        </div>
+
+<!--        Week forecast container starts-->
+        <div class="week-container">
+            <ul class="week-list">
+                <li>
+                    <img src="" alt="">
+                    <div class="day-name">Sun</div>
+                    <div class="day-temp"><span>29</span>°C</div>
+                </li>
+                <li>
+                    <img src="" alt="">
+                    <div class="day-name">Mon</div>
+                    <div class="day-temp"><span>29</span>°C</div>
+                </li>
+                <li>
+                    <img src="" alt="">
+                    <div class="day-name">Tue</div>
+                    <div class="day-temp"><span>29</span>°C</div>
+                </li>
+                <li>
+                    <img src="" alt="">
+                    <div class="day-name">Wen</div>
+                    <div class="day-temp"><span>29</span>°C</div>
+                </li>
+            </ul>
+        </div>
+<!--        Week forecast container ends-->
+
+<!--        Search container starts-->
+        <div class="search-container">
+            <button>
+                <img src="img/location.png" alt="Location icon" width="16">
+                <span>Current location</span>
+            </button>
+            <div class="text-field">
+                <input type="search" name="search" id="search" placeholder="Enter a city" class="text-field-input">
+                <span class="text-field-icon">
+                    <img src="img/search.png" alt="Search icon" width="16">
+                </span>
+            </div>
+        </div>
+<!--        Search container ends-->
+
+    </div>
+<!--    Right Info side ends-->
+
+</div>
+<!--Container ends-->
+<footer>
+    This project was coded by Ivanna Pokhyl and is open-sourced on GitHub and hosted on Netlify
+</footer>
 
 <!--Javascrip files-->
 <script src="src/main.js"></script>
