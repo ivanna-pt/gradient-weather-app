@@ -8,6 +8,7 @@
     <title>Gradient Weather App</title>
     <link rel="stylesheet" href="src/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 </head>
 <body>
 <div class="wrapper">
@@ -16,8 +17,8 @@
         <div class="weather-side">
 
             <div class="date-container">
-                <h2 class="date-dayname">Saturday</h2>
-                <div class="date-day">20 aug 2022</div>
+                <h2 class="date-dayname" id="weekday"></h2>
+                <div class="date-day" id="date"></div>
                 <div class="location"><img src="img/location.png" width="24" alt="location icon"><span id="city">Kyiv, Ukraine</span></div>
             </div>
 
@@ -40,8 +41,8 @@
         <div class="info-side">
             <div class="today-info-container">
                 <div class="info-row">
-                    <div class="title">Precipitation</div>
-                    <div class="value"><span id="precipitation">0</span>%</div>
+                    <div class="title">Cloudiness</div>
+                    <div class="value"><span id="cloudiness">0</span>%</div>
                 </div>
                 <div class="info-row">
                     <div class="title">Humidity</div>
@@ -87,8 +88,8 @@
                     <span>Current location</span>
                 </button>
                 <div class="text-field">
-                    <input type="search" name="search" id="search" placeholder="Enter a city" class="text-field-input">
-                    <span class="text-field-icon">
+                    <input type="search" name="search" id="search-input" placeholder="Enter a city" class="text-field-input">
+                    <span class="text-field-icon" id="search-btn">
                     <img src="img/search.png" alt="Search icon">
                 </span>
                 </div>
@@ -101,12 +102,13 @@
     </div>
     <!--Container ends-->
     <footer>
-        <p>This project was coded by Ivanna Pokhyl and is open-sourced on <a href="" class="footer-link">GitHub</a> and hosted on <a
+        <p>This project was coded by Ivanna Pokhyl and is open-sourced on <a href="https://github.com/ivanna-pt/gradient-weather-app" class="footer-link">GitHub</a> and hosted on <a
                 href="" class="footer-link">Netlify</a></p>
     </footer>
 </div>
 
 <!--Javascrip files-->
 <script src="src/main.js"></script>
+<script src="src/set-date.js"></script>
 </body>
 </html>
