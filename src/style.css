@@ -212,7 +212,7 @@ img, svg{
     width: 40px;
     height: 40px;
     margin: 0 auto;
-    background-image: url("../img/Cloud2=Off-2.png");
+    background-image: url("../img/02n.png");
     background-size: cover;
     transition: all .2s ease;
 }
@@ -226,7 +226,7 @@ img, svg{
 }
 
 .week-list>li:hover .day-img{
-    background-image: url("../img/Cloud2=On.png");
+    background-image: url("../img/02d.png");
 }
 
 .day-name{

@@ -10,6 +10,9 @@ function displayWeather(response) {
     document.querySelector("#wind").innerHTML = response.data.wind.speed;
     document.querySelector("#humidity").innerHTML = response.data.main.humidity;
     document.querySelector("#cloudiness").innerHTML = response.data.clouds.all;
+    let image = document.querySelector("#weather-img");
+    let attributeValue = `img/${response.data.weather[0].icon}.png`
+    image.setAttribute("src", attributeValue);
 }
 
 function searchCity (city){
