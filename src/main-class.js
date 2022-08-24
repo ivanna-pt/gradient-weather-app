@@ -56,23 +56,17 @@ let iconArr = [
     }
 ];
 
-
-let showCity = function (city){
+function showCity (city){
     let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
     axios.get(apiUrl).then(displayNewRequest);
 }
 
-showCity("Kyiv");
-
 function displayNewRequest(response){
-    console.log(response);
     let newRequest = new Request(response);
-    console.log(newRequest);
     newRequest.displayWeather();
     newRequest.changeIcon(mainIcon);
     celsiusTemp = newRequest.temperature;
-    console.log(celsiusTemp);
-    // console.log(fahrenheitTemp);
+
 };
 
 function handleSubmit(event){
@@ -98,15 +92,15 @@ function displayFahrenheitTemp(event){
     let temperatureElement = document.querySelector(".weather-temp");
     let fahrenheitTemp = (celsiusTemp * 9) / 5 + 32;
     temperatureElement.innerHTML = Math.round(fahrenheitTemp) + "°";
-    fahrenheitBtn.classList.toggle("selected");
-    celsiusBtn.classList.toggle("selected");
+    fahrenheitBtn.classList.add("selected");
+    celsiusBtn.classList.remove("selected");
 };
 
 function displayCelsiusTemp (event){
     let temperatureElement = document.querySelector(".weather-temp");
     temperatureElement.innerHTML = Math.round(celsiusTemp) + "°";
-    fahrenheitBtn.classList.toggle("selected");
-    celsiusBtn.classList.toggle("selected");
+    fahrenheitBtn.classList.remove("selected");
+    celsiusBtn.classList.add("selected");
 }
 
 searchBtn.addEventListener("click", handleSubmit);
@@ -127,11 +121,9 @@ class Request {
         this.windspeed = value.data.wind.speed;
         this.cloudiness = value.data.clouds.all;
         this.icon = value.data.weather[0].description;
-        this.fahrenheit = (value.data.main.temp * 9)/5 - 32;
     };
 
     displayWeather() {
-        console.log(this.city);
         document.querySelector("#city").innerHTML = this.city;
         document.querySelector(".weather-temp").innerHTML = Math.round(this.temperature) + "°";
         document.querySelector(".weather-desc").innerHTML = this.description;
@@ -143,7 +135,6 @@ class Request {
     changeIcon (img){
         let attributeValue = "img/";
         let icon = iconArr.find(icon => icon.description === this.icon)
-        console.log(icon);
 
         if (icon == undefined){
             img.setAttribute("src", attributeValue + "50n.png");
@@ -151,6 +142,6 @@ class Request {
             img.setAttribute("src", attributeValue + icon.iconOff);
         }
     };
-
 }
 
+showCity("Kyiv");
