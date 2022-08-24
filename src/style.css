@@ -138,15 +138,16 @@ img, svg{
     display: flex;
 }
 
-.units>span:first-child{
-    font-size: 64px;
-    font-weight: 700;
-}
-
-.units>span:last-child{
+.units>span{
     padding-top: 15px;
     padding-left: 10px;
-    font-size: 20px;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+.units .selected{
+    font-weight: 700;
+    text-decoration: underline;
 }
 
 .weather-desc{
