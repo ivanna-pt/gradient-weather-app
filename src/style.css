@@ -48,7 +48,7 @@ img, svg{
 
 /*Main*/
 .wrapper{
-    height: 100vh;
+    /*height: 100vh;*/
     font-family: 'Noto Sans', sans-serif;
     background-color: #343d4b;
     display: flex;
@@ -58,8 +58,8 @@ img, svg{
 }
 
 .container{
-    height: 450px;
-    margin: 30px 0;
+    min-height: 450px;
+    margin: 50px 0 20px;
     display: flex;
     background-color: #222831;
     color: #ffffff;
@@ -71,7 +71,6 @@ img, svg{
 .weather-side{
     position: relative;
     width: 300px;
-    height: 100%;
     padding: 25px;
     display: flex;
     flex-direction: column;
@@ -226,8 +225,8 @@ img, svg{
     box-shadow: 0 0 40px -5px rgba(0, 0, 0, 0.2);
 }
 
-.week-item:hover .day-img{
-    background-image: url("../img/02d.png");
+.week-item:hover .day-name{
+    font-weight: 400;
 }
 
 .day-name{
@@ -273,6 +272,7 @@ img, svg{
     padding: 10px 15px;
     font-size: 18px;
     background-color: #222831;
+    color: #FFFFFF;
     border: 3px solid #5151E5;
     border-radius: 25px;
     box-shadow: 0 0 30px -5px rgba(0, 0, 0, 0.25);
@@ -302,6 +302,9 @@ img, svg{
 }
 
 /*Footer*/
+footer{
+    margin-bottom: 30px;
+}
 footer>p{
     width: 600px;
     text-align: center;
