@@ -15,18 +15,14 @@ function showCity (city){
 }
 
 function displayNewRequest(response){
-    console.log(forecast);
     forecast.innerHTML = "";
     forecastArr = [];
-    console.log(response.data);
     let newRequest = new Request(response);
-    console.log(newRequest);
     newRequest.displayWeather();
     newRequest.changeIcon(mainIcon);
     getForecast(response.data.coord.lat, response.data.coord.lon);
     celsiusTemp = newRequest.temperature;
-    console.log(forecastArr);
-};
+}
 
 function handleSubmit(event){
     let city = document.querySelector("#search-input").value;
@@ -62,7 +58,7 @@ function displayFahrenheitTemp(event){
         let fahrenhaitValue = (celsiusValue * 9) / 5 + 32;
         temperatureElArr[i].innerHTML = Math.round(fahrenhaitValue);
     }
-};
+}
 
 function displayCelsiusTemp (event){
     let temperatureElement = document.querySelector(".weather-temp");
@@ -80,13 +76,11 @@ function displayCelsiusTemp (event){
 
 function getForecast(latitude, longitude){
     let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&exclude=current,minutely,hourly&appid=${apiKey}&units=metric`;
-    console.log(apiUrl);
     axios.get(apiUrl).then(response => {
-        console.log(response.data.daily);
         let tempArr = response.data.daily;
         for (let i = 1; i < 5; i++){
             forecastArr.push(tempArr[i]);
-        };
+        }
         displayForecast(forecastArr);
     });
 }
@@ -125,16 +119,16 @@ function findIcon(value){
     let icon = "";
 
     switch (true){
-        case (value == 800):
+        case (value === 800):
             icon += "01";
             break;
-        case (value == 801):
+        case (value === 801):
             icon += "02";
             break;
-        case (value == 802):
+        case (value === 802):
             icon = "03";
             break;
-        case (value == 803 || value == 804):
+        case (value === 803 || value === 804):
             icon += "04";
             break;
         case (value > 199 && value < 300):
@@ -146,7 +140,7 @@ function findIcon(value){
         case (value > 499 && value < 511):
             icon += "10";
             break;
-        case (value == 511):
+        case (value === 511):
             icon += "13";
             break;
         case (value > 519 && value < 600):
@@ -167,7 +161,7 @@ function findIcon(value){
 
 searchBtn.addEventListener("click", handleSubmit);
 cityInput.addEventListener("keydown", function (e){
-    if (e.code == "Enter") handleSubmit();
+    if (e.code === "Enter") handleSubmit();
 })
 currentBtn.addEventListener("click", getCurrentLocation);
 fahrenheitBtn.addEventListener("click", displayFahrenheitTemp);
@@ -183,8 +177,6 @@ class Request {
         this.windspeed = value.data.wind.speed;
         this.cloudiness = value.data.clouds.all;
         this.iconID = value.data.weather[0].id;
-        this.latitude = value.data.coord.lat;
-        this.longitude = value.data.coord.lon;
     };
 
     displayWeather() {
@@ -197,7 +189,6 @@ class Request {
     };
 
     changeIcon (img){
-        console.log(findIcon(this.iconID));
         let icon = findIcon(this.iconID);
         let attributeValue = `img/${icon}n.png`;
         img.setAttribute("src", attributeValue);
