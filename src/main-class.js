@@ -3,11 +3,9 @@ let cityInput = document.querySelector("#search-input");
 let searchBtn = document.querySelector("#search-btn");
 let currentBtn = document.querySelector(".location-btn");
 let mainIcon = document.querySelector("#weather-img");
-let forecastIcons = document.querySelectorAll(".week-list img");
 let celsiusTemp = null;
 let fahrenheitBtn = document.querySelector("#fahrenheit-btn");
 let celsiusBtn = document.querySelector("#celsius-btn");
-// let fahrenheitTemp = (celsiusTemp * 9) / 5 - 32;
 let iconArr = [
     {
         description: "clear sky",
@@ -55,6 +53,7 @@ let iconArr = [
         iconOff: "50n.png",
     }
 ];
+let forecastArr = [];
 
 function showCity (city){
     let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
@@ -62,11 +61,14 @@ function showCity (city){
 }
 
 function displayNewRequest(response){
+    console.log(response.data);
     let newRequest = new Request(response);
+    console.log(newRequest);
     newRequest.displayWeather();
     newRequest.changeIcon(mainIcon);
+    newRequest.getForecast();
     celsiusTemp = newRequest.temperature;
-
+    console.log(forecastArr);
 };
 
 function handleSubmit(event){
@@ -121,6 +123,8 @@ class Request {
         this.windspeed = value.data.wind.speed;
         this.cloudiness = value.data.clouds.all;
         this.icon = value.data.weather[0].description;
+        this.latitude = value.data.coord.lat;
+        this.longitude = value.data.coord.lon;
     };
 
     displayWeather() {
@@ -142,6 +146,17 @@ class Request {
             img.setAttribute("src", attributeValue + icon.iconOff);
         }
     };
+
+    getForecast(){
+        let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${this.latitude}&lon=-${this.longitude}&exclude=current,minutely,hourly&appid=${apiKey}&units=metric`;
+        console.log(apiUrl);
+        axios.get(apiUrl).then(response => {
+            let tempArr = response.data.daily;
+            for (let i = 0; i < 4; i++){
+                forecastArr.push(tempArr[i]);
+            }
+        });
+    }
 }
 
 showCity("Kyiv");
