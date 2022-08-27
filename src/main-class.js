@@ -7,53 +7,6 @@ let forecast = document.querySelector("#forecast");
 let celsiusTemp = null;
 let fahrenheitBtn = document.querySelector("#fahrenheit-btn");
 let celsiusBtn = document.querySelector("#celsius-btn");
-let iconArr = [
-    {
-        description: "clear sky",
-        iconOn: "01d.png",
-        iconOff: "01n.png",
-    },
-    {
-        description: "few clouds",
-        iconOn: "02d.png",
-        iconOff: "02n.png",
-    },
-    {
-        description: "scattered clouds",
-        iconOn: "03d.png",
-        iconOff: "03n.png",
-    },
-    {
-        description: "broken clouds",
-        iconOn: "04d.png",
-        iconOff: "04n.png",
-    },
-    {
-        description: "shower rain",
-        iconOn: "09d.png",
-        iconOff: "09n.png",
-    },
-    {
-        description: "rain",
-        iconOn: "10d.png",
-        iconOff: "10n.png",
-    },
-    {
-        description: "thunderstorm",
-        iconOn: "11d.png",
-        iconOff: "11n.png",
-    },
-    {
-        description: "snow",
-        iconOn: "13d.png",
-        iconOff: "13n.png",
-    },
-    {
-        description: "mist",
-        iconOn: "50d.png",
-        iconOff: "50n.png",
-    }
-];
 let forecastArr = [];
 
 function showCity (city){
@@ -131,6 +84,9 @@ function displayForecast(arr){
 
         let image = document.createElement("div");
         image.classList.add("day-img");
+        let icon = findIcon(item.weather[0].id);
+        image.style.backgroundImage = `url("/img/${icon}d.png")`;
+
 
         let weekDay = document.createElement("div");
         weekDay.classList.add("day-name");
@@ -150,6 +106,48 @@ function displayForecast(arr){
     })
 }
 
+function findIcon(value){
+    let icon = "";
+
+    switch (true){
+        case (value == 800):
+            icon += "01";
+            break;
+        case (value == 801):
+            icon += "02";
+            break;
+        case (value == 802):
+            icon = "03";
+            break;
+        case (value == 803 || value == 804):
+            icon += "04";
+            break;
+        case (value > 199 && value < 300):
+            icon += "11";
+            break;
+        case (value > 299 && value < 400):
+            icon += "09";
+            break;
+        case (value > 499 && value < 511):
+            icon += "10";
+            break;
+        case (value == 511):
+            icon += "13";
+            break;
+        case (value > 519 && value < 600):
+            icon += "09";
+            break;
+        case (value > 599 && value < 700):
+            icon += "13";
+            break;
+        case (value > 700 && value < 800):
+            icon += "50";
+            break;
+        default:
+            icon += "01";
+    }
+    return icon;
+}
 
 
 searchBtn.addEventListener("click", handleSubmit);
@@ -169,7 +167,7 @@ class Request {
         this.humidity = value.data.main.humidity;
         this.windspeed = value.data.wind.speed;
         this.cloudiness = value.data.clouds.all;
-        this.icon = value.data.weather[0].description;
+        this.iconID = value.data.weather[0].id;
         this.latitude = value.data.coord.lat;
         this.longitude = value.data.coord.lon;
     };
@@ -184,15 +182,15 @@ class Request {
     };
 
     changeIcon (img){
-        let attributeValue = "img/";
-        let icon = iconArr.find(icon => icon.description === this.icon)
-
-        if (icon == undefined){
-            img.setAttribute("src", attributeValue + "50n.png");
-        } else{
-            img.setAttribute("src", attributeValue + icon.iconOff);
-        }
+        console.log(findIcon(this.iconID));
+        let icon = findIcon(this.iconID);
+        let attributeValue = `img/${icon}n.png`;
+        img.setAttribute("src", attributeValue);
     };
 }
 
 showCity("Kyiv");
+
+
+
+
