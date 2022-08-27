@@ -54,6 +54,14 @@ function displayFahrenheitTemp(event){
     temperatureElement.innerHTML = Math.round(fahrenheitTemp) + "°";
     fahrenheitBtn.classList.add("selected");
     celsiusBtn.classList.remove("selected");
+
+    let temperatureElArr = document.querySelectorAll(".day-temp>span");
+
+    for (let i = 0; i < temperatureElArr.length; i++){
+        let celsiusValue = forecastArr[i].temp.day;
+        let fahrenhaitValue = (celsiusValue * 9) / 5 + 32;
+        temperatureElArr[i].innerHTML = Math.round(fahrenhaitValue);
+    }
 };
 
 function displayCelsiusTemp (event){
@@ -61,6 +69,13 @@ function displayCelsiusTemp (event){
     temperatureElement.innerHTML = Math.round(celsiusTemp) + "°";
     fahrenheitBtn.classList.remove("selected");
     celsiusBtn.classList.add("selected");
+
+    let temperatureElArr = document.querySelectorAll(".day-temp>span");
+
+    for (let i = 0; i < temperatureElArr.length; i++){
+        let celsiusValue = forecastArr[i].temp.day;
+        temperatureElArr[i].innerHTML = Math.round(celsiusValue);
+    }
 }
 
 function getForecast(latitude, longitude){
