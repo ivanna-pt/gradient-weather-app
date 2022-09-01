@@ -1,0 +1,64 @@
+@media (max-width: 760px) {
+    .wrapper{
+        height: 100%;
+    }
+
+    .container{
+        flex-direction: column;
+        max-width: 320px;
+        height: 100%;
+        margin-top: 20px;
+    }
+
+    .weather-side{
+        width: 100%;
+        padding: 20px;
+    }
+
+    .date-container{
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-start;
+    }
+
+    .date-dayname{
+        font-size: 20px;
+    }
+
+    .date-day{
+        font-size: 14px;
+    }
+
+    .weather-container{
+        align-items: center;
+    }
+
+    .weather-temp{
+        font-size: 40px;
+    }
+
+    .units>span{
+        font-size: 14px;
+    }
+
+    .weather-desc{
+        font-size: 18px;
+    }
+
+    .info-side{
+        width: auto;
+        margin: 20px;
+    }
+
+    .info-row{
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 600px) {
+    footer>p{
+        width: 320px;
+        font-size: 14px;
+    }
+    
+}
