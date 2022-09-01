@@ -8,6 +8,7 @@
     <title>Gradient Weather App</title>
     <link rel="stylesheet" href="src/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="src/mobile.css">
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 </head>
 <body>
@@ -17,8 +18,10 @@
         <div class="weather-side">
 
             <div class="date-container">
-                <h2 class="date-dayname" id="weekday"></h2>
-                <div class="date-day" id="date"></div>
+                <div class="date-row">
+                    <h2 class="date-dayname" id="weekday"></h2>
+                    <div class="date-day" id="date"></div>
+                </div>
                 <div class="location"><img src="img/location.png" width="24" alt="location icon"><span id="city"></span></div>
             </div>
 

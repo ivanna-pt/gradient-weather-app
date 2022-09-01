@@ -47,13 +47,15 @@ img, svg{
 }
 
 /*Main*/
-.wrapper{
-    /*height: 100vh;*/
+body{
     font-family: 'Noto Sans', sans-serif;
     background-color: #343d4b;
+}
+.wrapper{
+
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    /*justify-content: center;*/
     align-items: center;
 }
 
@@ -104,6 +106,11 @@ img, svg{
     z-index: 2;
 }
 
+.date-container{
+    display: flex;
+    flex-direction: column;
+}
+
 .date-dayname{
     font-size: 25px;
     font-weight: 700;
@@ -111,13 +118,18 @@ img, svg{
 
 .date-day{
     font-size: 18px;
+    margin-bottom: 15px;
 }
 .location{
-    margin-top: 15px;
     display: flex;
     align-items: center;
     font-size: 18px;
     font-weight: 500;
+}
+
+.weather-container{
+    display: flex;
+    flex-direction: column;
 }
 
 .weather-container>img{
@@ -135,19 +147,26 @@ img, svg{
 
 .units{
     display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-left: 15px;
 }
 
 .units>span{
-    padding-top: 15px;
-    padding-left: 10px;
-    font-size: 30px;
+    font-size: 24px;
     cursor: pointer;
+}
+
+.units>span:first-child{
+    border-bottom: 1px solid #FFFFFF;
 }
 
 .units .selected{
     font-weight: 700;
-    text-decoration: underline;
 }
+
+
 
 .weather-desc{
     font-size: 24px;
